@@ -38,6 +38,8 @@ public class LoopTest
 
     private Function<String, String> uc = a -> a.toUpperCase();
 
+    private Function<String, Integer> len = a -> a.length();
+
 
     /**
      * @return the suite of tests being tested
@@ -85,6 +87,16 @@ public class LoopTest
 
         Loop strTest = new StrLoop(l);
         List<String> output = strTest.apply(uc);
+
+        assertThat(output, is(expected));
+    }
+
+    public void testLength() {
+        List<String> l = Arrays.asList("cat", "dog", "java", "compile");
+        List<Integer> expected = Arrays.asList(3, 3, 4, 7);
+
+        Loop strintTest = new StrintLoop(l);
+        List<Integer> output = strintTest.apply(len);
 
         assertThat(output, is(expected));
     }
