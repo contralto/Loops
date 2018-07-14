@@ -49,7 +49,7 @@ public class LoopTest
         List<Integer> l = Arrays.asList(0,1,2,3);
         List<Integer> expected = Arrays.asList(0,1,4,9);
 
-        IntLoop intTest = new IntLoop(l);
+        Loop intTest = new IntLoop(l);
         List<Integer> output = intTest.apply(sq);
 
         assertThat(output, is(expected));
@@ -59,7 +59,7 @@ public class LoopTest
         List<Integer> l = Arrays.asList(0,1,2,3);
         List<Integer> expected = Arrays.asList(0,1,8,27);
 
-        IntLoop intTest = new IntLoop(l);
+        Loop intTest = new IntLoop(l);
         List<Integer> output = intTest.apply(qb);
 
         assertThat(output, is(expected));
