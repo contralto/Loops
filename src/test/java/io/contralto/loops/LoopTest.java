@@ -32,7 +32,11 @@ public class LoopTest
         }
     };
 
-    private Function<Integer, Integer> qb = i -> i*i*i;
+    private Function<Integer, Integer> qb = i -> i * i * i;
+
+    private Function<String, String> lc = a -> a.toLowerCase();
+
+    private Function<String, String> uc = a -> a.toUpperCase();
 
 
     /**
@@ -46,8 +50,8 @@ public class LoopTest
      * Rigourous Test :-)
      */
     public void testSq() {
-        List<Integer> l = Arrays.asList(0,1,2,3);
-        List<Integer> expected = Arrays.asList(0,1,4,9);
+        List<Integer> l = Arrays.asList(0, 1, 2, 3);
+        List<Integer> expected = Arrays.asList(0, 1, 4, 9);
 
         Loop intTest = new IntLoop(l);
         List<Integer> output = intTest.apply(sq);
@@ -56,11 +60,31 @@ public class LoopTest
     }
 
     public void testQb() {
-        List<Integer> l = Arrays.asList(0,1,2,3);
-        List<Integer> expected = Arrays.asList(0,1,8,27);
+        List<Integer> l = Arrays.asList(0, 1, 2, 3);
+        List<Integer> expected = Arrays.asList(0, 1, 8, 27);
 
         Loop intTest = new IntLoop(l);
         List<Integer> output = intTest.apply(qb);
+
+        assertThat(output, is(expected));
+    }
+
+    public void testLower() {
+        List<String> l = Arrays.asList("A", "B", "C");
+        List<String> expected = Arrays.asList("a", "b", "c");
+
+        Loop strTest = new StrLoop(l);
+        List<String> output = strTest.apply(lc);
+
+        assertThat(output, is(expected));
+    }
+
+    public void testUpper() {
+        List<String> l = Arrays.asList("a", "b", "c");
+        List<String> expected = Arrays.asList("A", "B", "C");
+
+        Loop strTest = new StrLoop(l);
+        List<String> output = strTest.apply(uc);
 
         assertThat(output, is(expected));
     }
