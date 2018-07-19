@@ -1,10 +1,16 @@
 package io.contralto.loops;
 
+import io.contralto.processor.IntAverage;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Unit test for simple App.
@@ -41,5 +47,16 @@ public class FunctionTest
             }
         };
         assertTrue(sq.apply(3) == 9);
+    }
+
+    public void testAverage() {
+        List<Integer> list = Arrays.asList(5, 8, 1, 4, 3);
+        Double avgval = 4.2;
+
+        IntAverage average = new IntAverage();
+        Double test = average.process(list);
+
+        assertThat(test, is(avgval));
+
     }
 }
