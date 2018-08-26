@@ -1,6 +1,9 @@
 package io.contralto.loops;
 
+import io.contralto.processor.CountPrimes;
+import io.contralto.processor.Divisors;
 import io.contralto.processor.IntAverage;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -8,6 +11,8 @@ import junit.framework.TestSuite;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -57,6 +62,28 @@ public class FunctionTest
         Double test = average.process(list);
 
         assertThat(test, is(avgval));
+    }
 
+    public void testDivisorSum() {
+        int n = 1000000;
+        List<Integer> list = IntStream.rangeClosed(1, n).boxed().collect(Collectors.toList());
+        Double logn = Math.log(n);
+
+        Divisors divsum = new Divisors();
+        Double avgDivs = divsum.process(list) / (double)n;
+
+        assertThat("", Math.abs(avgDivs - logn) < 0.1);
+    }
+
+    public void testCountPrimes() {
+        int n = 10000;
+        List<Integer> list = IntStream.rangeClosed(1, n).boxed().collect(Collectors.toList());
+        Double approx = n/Math.log(n);
+        System.out.println(approx);
+
+        CountPrimes primenums = new CountPrimes();
+        Double totalPrime = (double)(primenums.process(list));
+
+        assertThat("", Math.abs(totalPrime - approx)/1000 < 1.3);
     }
 }
