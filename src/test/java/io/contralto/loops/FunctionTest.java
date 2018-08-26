@@ -65,14 +65,14 @@ public class FunctionTest
     }
 
     public void testDivisorSum() {
-        int n = 1000000;
+        int n = 100000;
         List<Integer> list = IntStream.rangeClosed(1, n).boxed().collect(Collectors.toList());
         Double logn = Math.log(n);
 
         Divisors divsum = new Divisors();
         Double avgDivs = divsum.process(list) / (double)n;
 
-        assertThat("", Math.abs(avgDivs - logn) < 0.1);
+        assertThat("", Math.abs(avgDivs - logn) < 0.2);
     }
 
     public void testCountPrimes() {
