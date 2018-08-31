@@ -84,6 +84,14 @@ public class FunctionTest
         CountPrimes primenums = new CountPrimes();
         Double totalPrime = (double)(primenums.process(list));
 
-        assertThat("", Math.abs(totalPrime - approx)/1000 < 1.3);
+        assertThat("", Math.abs(totalPrime - approx) / 1000 < 1.3);
+    }
+
+    public void testBaseConverter() {
+        BaseConverter bc = new BaseConverter(6);
+
+        assertThat(bc.convert(247), is("1051"));
+        assertThat(bc.convert(36), is("100"));
+
     }
 }
