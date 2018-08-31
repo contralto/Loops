@@ -90,8 +90,12 @@ public class FunctionTest
     public void testBaseConverter() {
         BaseConverter bc = new BaseConverter(6);
 
-        assertThat(bc.convert(247), is("1051"));
-        assertThat(bc.convert(36), is("100"));
+        assertThat(bc.convert(247), is((double)1051));
+        assertThat(bc.convert(36), is((double)100));
+
+        bc.changeBase(8);
+
+        assertThat(bc.convert(1245), is((double)2335));
 
     }
 }
