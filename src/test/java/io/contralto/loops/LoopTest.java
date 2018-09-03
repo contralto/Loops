@@ -100,4 +100,19 @@ public class LoopTest
 
         assertThat(output, is(expected));
     }
+
+    public void testAvg() {
+        List<Integer> l = Arrays.asList(0, 1, 2, 3);
+
+        IntAvg intTest = new IntAvg(l);
+        double output = intTest.average(l);
+        double expected1 = 1.5;
+
+        assertThat(output, is(expected1));
+
+        l = Arrays.asList(0, 1, 2, 3, 6);
+        double output2 = intTest.average(l);
+        double expected2 = 2.0;
+        assertThat(output2, is(expected2));
+    }
 }
