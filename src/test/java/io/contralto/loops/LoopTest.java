@@ -104,7 +104,7 @@ public class LoopTest
     public void testAvg() {
         List<Integer> l = Arrays.asList(0, 1, 2, 3);
 
-        IntAvg intTest = new IntAvg(l);
+        IntAvg intTest = new IntAvg();
         double output = intTest.average(l);
         double expected1 = 1.5;
 
