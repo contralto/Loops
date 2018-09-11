@@ -45,12 +45,7 @@ public class FunctionTest
      * Rigourous Test :-)
      */
     public void testFunction() {
-        Function<Integer, Integer> sq = new Function<Integer, Integer>() {
-            @Override
-            public Integer apply(Integer i) {
-                return i*i;
-            }
-        };
+        Function<Integer, Integer> sq = i -> i*i;
         assertTrue(sq.apply(3) == 9);
     }
 
@@ -96,6 +91,10 @@ public class FunctionTest
         bc.changeBase(8);
 
         assertThat(bc.convert(1245), is((double)2335));
+
+        bc.changeBase(3);
+
+        assertThat(bc.convert(21), is((double)4));
 
     }
 }

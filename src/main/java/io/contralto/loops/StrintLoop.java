@@ -15,8 +15,8 @@ public class StrintLoop implements Loop<String,Integer> {
     @Override
     public List<Integer> apply(Function<String, Integer> f) {
         List<Integer> output = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            output.add(f.apply(list.get(i)));
+        for (String aList : list) {
+            output.add(f.apply(aList));
         }
 
 

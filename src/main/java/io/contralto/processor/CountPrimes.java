@@ -11,9 +11,8 @@ public class CountPrimes implements Processor<Integer, Integer> {
         for (int i = 0; i < items.size(); i++) {
             Integer sum = 0;
             Integer number = items.get(i);
-            for (int j = 0; j < items.size(); j++) {
-                Integer divisor = items.get(j);
-                if (isDivisor(number, divisor) == true) {
+            for (Integer divisor : items) {
+                if (isDivisor(number, divisor)) {
                     sum++;
                 }
             }
@@ -25,9 +24,6 @@ public class CountPrimes implements Processor<Integer, Integer> {
     }
 
     private static boolean isDivisor(Integer num, Integer div) {
-        if (num % div == 0) {
-            return true;
-        }
-        return false;
+        return num % div == 0;
     }
 }

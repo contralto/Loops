@@ -26,12 +26,7 @@ public class LoopTest
         super(testName);
     }
 
-    private Function<Integer, Integer> sq = new Function<Integer, Integer>() {
-        @Override
-        public Integer apply(Integer i) {
-            return i * i;
-        }
-    };
+    private Function<Integer, Integer> sq = i -> i * i;
 
     private Function<Integer, Integer> qb = i -> i * i * i;
 

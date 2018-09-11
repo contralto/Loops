@@ -12,8 +12,8 @@ public class IntLoop implements Loop<Integer, Integer> {
 
     public List<Integer> apply(Function<Integer, Integer> f) {
         List<Integer> output = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            output.add(f.apply(list.get(i)));
+        for (Integer aList : list) {
+            output.add(f.apply(aList));
         }
         return output;
     }
